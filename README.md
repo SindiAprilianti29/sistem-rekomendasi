@@ -58,7 +58,9 @@ Selanjutnya, uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:
 Beberapa tahap EDA yang dilakukan pada dataset
 
 Pada dataset movies.csv
+
 - Melihat informasi pada dataset movies.csv dengan movies_df.info()
+  
   ![image](https://github.com/user-attachments/assets/e395d5a1-8ac8-46a0-8829-0d76c3689a86)
   
   menunjukkan bahwa movies_df memiliki 3 kolom yang berisi movieId dengan tipe data int64, title bertipe object, dan genres yang bertipe object. Dataset ini memiliki 10.329 entri data
