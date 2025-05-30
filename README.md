@@ -8,44 +8,27 @@ Daftar Pustaka
 
 Isinkayea, F.O., Folajimi, Y.O., Ojokoh, B.A. 2015. Recommendation Systems: Principles, Methods, and Evaluation. Egyptian Infomatics Journal. Available at: https://www.sciencedirect.com/science/article/pii/S1110866515000341. 
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Jelaskan mengapa dan bagaimana masalah tersebut harus diselesaikan
-- Menyertakan hasil riset terkait atau referensi. Referensi yang diberikan harus berasal dari sumber yang kredibel dan author yang jelas.
-- Format Referensi dapat mengacu pada penulisan sitasi [IEEE](https://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE_Reference_Guide.pdf), [APA](https://www.mendeley.com/guides/apa-citation-guide/) atau secara umum seperti [di sini](https://penerbitdeepublish.com/menulis-buku-membuat-sitasi-dengan-mudah/)
-- Sumber yang bisa digunakan [Scholar](https://scholar.google.com/)
-
 ## Business Understanding
-
-Pada bagian ini, Anda perlu menjelaskan proses klarifikasi masalah.
-
-Bagian laporan ini mencakup:
 
 ### Problem Statements
 
 Menjelaskan pernyataan masalah:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+- Pernyataan Masalah 1: Bagaimana cara memberikan rekomendasi film yang relevan untuk setiap pengguna berdasarkan data historis mereka?
+- Pernyataan Masalah 2: Bagaimana sistem dapat memberikan rekoemndasi yang bersifat personal untuk setiap pengguna?
 
 ### Goals
 
 Menjelaskan tujuan proyek yang menjawab pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
+- Jawaban pernyataan masalah 1: Mmembangun sistem rekomendasi yang dapat memberikan saran film yang sesuai minat pengguna
+- Jawaban pernyataan masalah 2: Meningkatkan personalisasi dalam rekomendasi film
 
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Approach” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
 
     ### Solution statements
-    - Mengajukan 2 atau lebih solution approach (algoritma atau pendekatan sistem rekomendasi).
+    - Menerapkan content based filtering yang akan menganalisis karakteristik konten film, seperti genre yang disukai pengguna, lalu merekomendasikan film dengan karakteristik yang serupa.
+    - Menerapkan collaborative filtering yang akan merekomendasikan film berdasarkan pola kesamaan antar pengguna atau antar film. Sistem akan mencari pengguna lain yang memiliki preferensi serupa, lalu menyarankan film yang mereka sukai tapi belum ditonton pengguna. 
 
 ## Data Understanding
 Dataset berasal dari Kaggle yang berjudul "Movielens Dataset", yang dapat diunduh pada tautan berikut: https://www.kaggle.com/datasets/ayushimishra2809/movielens-dataset. Dataset ini terdiri atas dua file csv, yaitu movies.csv dan ratings.csv
-
-Selanjutnya, uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
 
 ### Variabel-variabel pada Movielens dataset adalah sebagai berikut:
 - movieId: merupakan id unik untuk tiap film dalam dataset
