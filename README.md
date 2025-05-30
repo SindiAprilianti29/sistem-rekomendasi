@@ -180,21 +180,75 @@ Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dil
 ## Modeling
 Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
 
+Modeling yang dilakukan pada project ini adalah content based filtering dan collaborative filtering. 
 ### Content Based Filtering
+Content Based Filtering menggunakan TF-IDF Vectorizer dan juga cosine similarity
+#### Metode TF-IDF Vectorizer
+- a
+Berfungsi mengubah teks, misalnya genre film menjadi representasi numerik yang menunjukkan pentingnya kata dalam dokumen relatif terhadap seluruh koleksi data. Dalam content based filtering, TF-IDF membantu memproses fitur konten.
+Berikut merupakan contoh hasil TD-IDF
 
-##### Metode TF-IDF Vectorizer
+![image](https://github.com/user-attachments/assets/865c9f37-ca03-4b5f-ac75-8496e5f3f49f)
 
+Hasil TF-IDF menunjukkan representasi numerik dari genre genre film berdasarkan pentingnya setiap genre dalam tiap film tersebut. Setiap barisnya mewakili title film, dan kolom adalah genre. Nilai di tiap sel adalah bobot TF-IDF yang menandakan seberapa relevan genre tersebut untuk film itu, makin besar nilainya, maka semakin kahs genre tersebut bagi film. Misalnya Pada film St. Vincent (2014) memiliki nilai 1.000 pada genre Comedy, artinya genre itu sangat spesifik dan penting untuk dilm tersebut, sementara genre lain bernilai 0 yanag berarti tidak terkait. Ini bantu sistem merekomendasikan film dengan genre mirip berdasarkan bobot kata yang dihitung. 
 
+- 
+#### Cosine Similarity
+Berfungsi mengukur seberapa mirip dua buah vektor, misal dua film berdasarkan genrenya dengan menghitung sudut kosinus antar vektor tersebut. Dalam content based filtering, cosine similarity digunakan untuk menemukan film yang paling mirip berdasarkan fitur tersebut. Semakin nilai cosine mendekati 1, maka semakin mirip kedua item tersebut. 
 
+![image](https://github.com/user-attachments/assets/7d71e347-d752-4c04-9799-81c5708a13c6)
+
+Hasil cosine similarity menunjukkan seberapa mirip genre antar film berdasarkan representasi teks genre mereka ayng telah diproses menggunakan TF-IDF Vectorizer. Misalnya Honeydripper (2007) memiliki nilai 1.000 terhadap film Nixon (1995) yang menunjukkan bahwa film ini sangat mirip dari segi genre. Film seperti Turner & Hooch (1989) memiliki nilai 0.0 terhadap film-film lain menunjukkan bahwa genrenya tidak memiliki kemiripan sama sekali dengan yang dibandingkannya. 
+
+Ketika dilakukan percobaan untuk merekomendasikan film kepada user yang menyukai Transformers: Age of Extinction (2014), berikut ini merupakan 5 film yang direkomendasikan. Kelimanya memiliki genre yang serupa, yaitu Action, Adventure, dan Sci-fi.
+
+![image](https://github.com/user-attachments/assets/fb6ad410-2eaa-403b-93da-9ce42de9e451)
+
+Hasil ini bisa digunakan dalam content based filtering untuk merekomendasikan film yang genrenya mirip dengan film yang disukai pengguna. Misal jika pengguna menyukai Honeydripper (2007) maka film dengan nilai cosine similarity tinggi seperti Nixon (1995) bisa direkoemndasikan. 
+
+Kelebihan content based filtering
+- Tidak tergantung pada pengguna lain, rekomendasinya berdasarkan atribut item, cocok untuk pengguna baru
+- Konsisten dengan minat pengguna karena merekomendasikan film yang mirip dengan yang disukai sebelumnya, jadi hasil lebih relevan
+- Asalkan data item seperti genre ada, sistem tetap bisa bekerja (tidak terpengaruh sparsity)
+
+Kekurangan content based filtering
+- Kurang bervariasi karena cenderung merekomendasikan item yang terlalu mirip
+- Membutuhkan data konten yang lengkap karena jika informasi genre atau atribut lain tidak lengkap sistem jadi tidak akurat
+- Sulit menangkap pola kompleks karena tidak mempertimbangkan interaksi antar pengguna yang bisa memberi informasi tambahan
+
+### Collaborative Filtering
+Pendekatan collaborative filtering bekerja dengan memetakan setiap pengguna dan film ke dalam indeks numerik yang unik. Setelah data dinormalisasi dan dibagi menjadi data latih dan data test, model dikembangkan menggunakan arsitektur embedding, di mana tiap pengguna dan film direpresentasikan sebagai vektor dalam ruang berdimensi tertentu. Model kemudian mempelajari hubungan antara pengguna dan film melalui operasi dot product pada vektor embedding untuk prediksi rating yang diberikan. Tujuan metode ini adalah menangkap pola preferensi pengguna berdasarkan interaksi historis mereka dengan film tanpa perlu info konten dari film itu sendiri. 
+
+Hasil yang direkomendasikan kepada user 567 adalah sebagai berikut.
+
+![image](https://github.com/user-attachments/assets/f51ccbf8-7cbf-4497-aea8-74b1c5f8e039)
+
+Pengguna ini memiliki preferensi terhadap film dengan genre thriller, crime, sci-fi, dan drama, ada juga variasi comedy dan fantasi. Sistem berhasil merekomendasikan film dengan genre yang sejalan.
+
+Kelebihan collaborative filtering
+- Tidak membutuhkan data konten film karena sistem hanya bergantung pada interaksi seperti rating antar pengguna dan item
+- Mampu menangkap pola kompleks karena bisa menemukan hubungan tidak terduga antara film dan pengguna berdasarkan kesamaan perilaku
+- Mempertimbangkan kebiasaan banyak pengguna lain dengan preferensi serupa
+
+Kekurangan collaborative filtering
+- Cold start problem, dia tidak bisa memberikan rekoemndasi yang baik untuk pengguna baru atau film baru karena belum ada cukup data interaksi
+- Jika data interaksi sangat sedikit model sulit belajar karena terlalu banyak missing values
+- Membutuhkan sumber daya lebih besar saat jumlah pengguna atau item sangat besar
+  
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menyajikan dua solusi rekomendasi dengan algoritma yang berbeda.
 - Menjelaskan kelebihan dan kekurangan dari solusi/pendekatan yang dipilih.
 
 ## Evaluation
-Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+Metrik yang digunakan adalah Root Mean Squared Error (RMSE), yaitu metrik untuk mengukur seberapa jauh prediksi model dari nilai sebenarnya. RMSE menghitung akar kuadrat dari rata-rata kuadrat selisih antara nilai prediksi dan nilai aktual. Nilai RMSE yang lebih kecil menunjukkan bahwa model memberikan prediksi yang lebih akurat, karena error prediksi lebih kecil. RMSE sering digunakan utnuk masalah regresi dan sistem rekomendasi. Berikut merupakan formula untuk RMSE:
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
+![image](https://github.com/user-attachments/assets/1df0c67b-272f-4d9e-9abd-e9f5cfebf632)
+
+Hasil evaluasi model sebagai berikut
+
+![image](https://github.com/user-attachments/assets/869249c2-1035-4bda-b273-5914104de283)
+
+Grafik menunjukkan performa model berdasarkan metrik RMSE pada data pelatihan dan pengujian selama 100 epoch. Terlihat bahwa RMSE pada data train mengalami penurunan tajam pada awal pelatihan dan kemudian stabil di sekitar 0.19, menandakan bahwa model mampu belajar dengan baik dari data latih. Sementara itu, RMSE pada data test juga menurun di awal, namun cenderung stagnan dan berfluktuasi di kisaran 0.20 hingga 0.205. Secara keseluruhan, model menunjukkan performa cukup baik.
+
 
