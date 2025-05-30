@@ -194,14 +194,14 @@ Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dil
   
     Sudah tidak terdapat NaN. Ini perlu dilakukan, karena jika terdapat nilai NaN dapat menyebabkan error saat pemodelan berbasis genre. Mengganti NaN dengan string kosong untuk menjaga kestabilan data tanpa harus menghapus baris penting. 
 
-- 
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
-
 ## Modeling
 Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
+
+### Content Based Filtering
+
+##### Metode TF-IDF Vectorizer
+
+
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menyajikan dua solusi rekomendasi dengan algoritma yang berbeda.
