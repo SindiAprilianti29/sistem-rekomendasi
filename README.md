@@ -202,9 +202,9 @@ Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dil
   Berfungsi mengubah teks, misalnya genre film menjadi representasi numerik yang menunjukkan pentingnya kata dalam dokumen relatif terhadap seluruh koleksi data. Dalam content based filtering, TF-IDF membantu memproses fitur konten.
 Berikut merupakan contoh hasil TD-IDF
 
-![image](https://github.com/user-attachments/assets/865c9f37-ca03-4b5f-ac75-8496e5f3f49f)
+![image](https://github.com/user-attachments/assets/385df708-de6e-40fd-8999-f1a549de3bfd)
 
-Hasil TF-IDF menunjukkan representasi numerik dari genre genre film berdasarkan pentingnya setiap genre dalam tiap film tersebut. Setiap barisnya mewakili title film, dan kolom adalah genre. Nilai di tiap sel adalah bobot TF-IDF yang menandakan seberapa relevan genre tersebut untuk film itu, makin besar nilainya, maka semakin kahs genre tersebut bagi film. Misalnya Pada film St. Vincent (2014) memiliki nilai 1.000 pada genre Comedy, artinya genre itu sangat spesifik dan penting untuk dilm tersebut, sementara genre lain bernilai 0 yanag berarti tidak terkait. Ini bantu sistem merekomendasikan film dengan genre mirip berdasarkan bobot kata yang dihitung. 
+Hasil TF-IDF menunjukkan representasi numerik dari genre genre film berdasarkan pentingnya setiap genre dalam tiap film tersebut. Setiap barisnya mewakili title film, dan kolom adalah genre. Nilai di tiap sel adalah bobot TF-IDF yang menandakan seberapa relevan genre tersebut untuk film itu, makin besar nilainya, maka semakin kahs genre tersebut bagi film. Misalnya Pada film Demetrius and the Glafiators (1954) memiliki nilai 1.000 pada genre Drama, artinya genre itu sangat spesifik dan penting untuk dilm tersebut, sementara genre lain bernilai 0 yanag berarti tidak terkait. Ini bantu sistem merekomendasikan film dengan genre mirip berdasarkan bobot kata yang dihitung. 
 
 - pada ratings_df dilakukan pemetaan userId dan movieId ke dalam indeks numerik (user_id_to_index, movie_id_to_index)
   Mengubah userId dan movieId menjadi indeks numerik yang terurut agar lebih mudah diproses oleh model. Kode akan mengambil daftar userId dan movieId yang unik dari dataset, kemudian membuat dua dictionary untuk masing masing, yaitu memetakan userId dan movieId asli ke indeks numerik serta sebaliknya
