@@ -185,7 +185,7 @@ Berikut merupakan contoh hasil TD-IDF
 
 Hasil TF-IDF menunjukkan representasi numerik dari genre genre film berdasarkan pentingnya setiap genre dalam tiap film tersebut. Setiap barisnya mewakili title film, dan kolom adalah genre. Nilai di tiap sel adalah bobot TF-IDF yang menandakan seberapa relevan genre tersebut untuk film itu, makin besar nilainya, maka semakin kahs genre tersebut bagi film. Misalnya Pada film St. Vincent (2014) memiliki nilai 1.000 pada genre Comedy, artinya genre itu sangat spesifik dan penting untuk dilm tersebut, sementara genre lain bernilai 0 yanag berarti tidak terkait. Ini bantu sistem merekomendasikan film dengan genre mirip berdasarkan bobot kata yang dihitung. 
 
-## Modeling
+## Modeling & Results
 Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
 
 Modeling yang dilakukan pada project ini adalah content based filtering dan collaborative filtering. 
