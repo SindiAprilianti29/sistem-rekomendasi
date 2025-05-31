@@ -279,8 +279,8 @@ Metrik yang digunakan adalah Root Mean Squared Error (RMSE), yaitu metrik untuk 
 
 Hasil evaluasi model sebagai berikut
 
-![image](https://github.com/user-attachments/assets/869249c2-1035-4bda-b273-5914104de283)
+![image](https://github.com/user-attachments/assets/247043ed-bbd2-46f3-aca5-30f03c598706)
 
-Grafik menunjukkan performa model berdasarkan metrik RMSE pada data pelatihan dan pengujian selama 100 epoch. Terlihat bahwa RMSE pada data train mengalami penurunan tajam pada awal pelatihan dan kemudian stabil di sekitar 0.19, menandakan bahwa model mampu belajar dengan baik dari data latih. Sementara itu, RMSE pada data test juga menurun di awal, namun cenderung stagnan dan berfluktuasi di kisaran 0.20 hingga 0.205. Secara keseluruhan, model menunjukkan performa cukup baik.
+Grafik menunjukkan performa model berdasarkan metrik RMSE pada data pelatihan dan pengujian selama 100 epoch. Terlihat bahwa RMSE pada data train mengalami penurunan tajam pada awal pelatihan dan kemudian stabil di sekitar 0.19 - 0.20, menandakan bahwa model mampu belajar dengan baik dari data latih. Sementara itu, RMSE pada data test juga menurun di awal, namun cenderung stagnan dan berfluktuasi di kisaran 0.20 hingga 0.21. Secara keseluruhan, model menunjukkan performa cukup baik.
 
 
