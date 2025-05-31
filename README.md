@@ -147,7 +147,7 @@ Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dil
   
   ![image](https://github.com/user-attachments/assets/f12e2eab-59c4-488f-ac3c-60b9c413b483)
   
-  Terdapat 5 missing values pada genres dan title di df. Langkah ini untuk memastikan tidak ada missing values, karena jika ada akan mengganggu pemodelan.
+  Terdapat 5 missing values pada title dan genre di df. Langkah ini untuk meastikan tidak ada missing values, karena jika ada akan mengganggu pemodelan.
 
 - Mengecek data duplikat pada df dengan duplicated()
   
@@ -177,7 +177,28 @@ Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dil
   
     Sudah tidak terdapat NaN. Ini perlu dilakukan, karena jika terdapat nilai NaN dapat menyebabkan error saat pemodelan berbasis genre. Mengganti NaN dengan string kosong untuk menjaga kestabilan data tanpa harus menghapus baris penting.
 
-- Metode TF-IDF Vectorizer
+- Mengecek dan menampilkan jumlah data yang memiliki nilai NaN pada title
+
+  ![image](https://github.com/user-attachments/assets/ffe33778-3adf-4c30-bc42-6a73b3bf407f)
+
+- Menghapus baris yang memiliki NaN pada kolom title
+
+  ![image](https://github.com/user-attachments/assets/be36e9f5-f49f-49ee-aa0b-5a4b91efb2cb)
+
+  Hasilnya sudah tidak ada missing values
+
+- Menghapus duplikat yang ada pada movie_df
+
+- Melakukan TF-IDF Vectorizer
+
+  Memproses data genre film menjadi fitur kata unik yang bsia digunakan untuk perhitungan similarity
+
+  ![image](https://github.com/user-attachments/assets/b1ef4b2c-96d0-4931-a88e-8f9587e2dbf0)
+
+  Kemudian mengubah vektor tf-idf menjadi bentuk list
+
+  ![image](https://github.com/user-attachments/assets/18ded09d-4f01-44fe-9f17-09c23dc46a0e)
+
   Berfungsi mengubah teks, misalnya genre film menjadi representasi numerik yang menunjukkan pentingnya kata dalam dokumen relatif terhadap seluruh koleksi data. Dalam content based filtering, TF-IDF membantu memproses fitur konten.
 Berikut merupakan contoh hasil TD-IDF
 
@@ -185,14 +206,28 @@ Berikut merupakan contoh hasil TD-IDF
 
 Hasil TF-IDF menunjukkan representasi numerik dari genre genre film berdasarkan pentingnya setiap genre dalam tiap film tersebut. Setiap barisnya mewakili title film, dan kolom adalah genre. Nilai di tiap sel adalah bobot TF-IDF yang menandakan seberapa relevan genre tersebut untuk film itu, makin besar nilainya, maka semakin kahs genre tersebut bagi film. Misalnya Pada film St. Vincent (2014) memiliki nilai 1.000 pada genre Comedy, artinya genre itu sangat spesifik dan penting untuk dilm tersebut, sementara genre lain bernilai 0 yanag berarti tidak terkait. Ini bantu sistem merekomendasikan film dengan genre mirip berdasarkan bobot kata yang dihitung. 
 
-## Modeling & Results
+- pada ratings_df dilakukan pemetaan userId dan movieId ke dalam indeks numerik (user_id_to_index, movie_id_to_index)
+  Mengubah userId dan movieId menjadi indeks numerik yang terurut agar lebih mudah diproses oleh model. Kode akan mengambil daftar userId dan movieId yang unik dari dataset, kemudian membuat dua dictionary untuk masing masing, yaitu memetakan userId dan movieId asli ke indeks numerik serta sebaliknya
+  
+- Melakukan penambahan kolom user_index dan movie_index ke ratings_df
+  isinya indeks numerik hasil pemetaan dari userId dan movieId. Ini agar model yang menggunakan embedding layer dapat menerima input berupa indeks numerik bukan Id asli, sehingga proses training dan prediksi menjadi lebih terstruktur
+  
+- melakukan random data (ratings_df.sample(frac=1)
+  mengacak urutan baris dalam dataset ratings_df. sample(frac=1) akan mengambil 100% data tapi dalam urutan yang diacak.Tujuannya untuk menghindari bias urutan data.
+  
+- Melakukan normalisasi nilai rating ((val - min_raing) / (max_rating - min_rating))
+  Kolom rating dinormalisasi ke rentang 0 - 1 menggunakan metode min max scaling agar bisa langsung digunakan untuk training model di RecommenderNet
+  
+- Melakukan pembagian dataset menjadi data latih dan data validasi dengan rasio 80:20
+  
+## Modeling
 Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
 
 Modeling yang dilakukan pada project ini adalah content based filtering dan collaborative filtering. 
 
 ### Content Based Filtering
-Content Based Filtering menggunakan hasil dari TF-IDF Vectorizer dan cosine similarity
- 
+Content Based Filtering menggunakan hasil TF-IDF Vectorizer dan cosine similarity
+
 #### Cosine Similarity
 Berfungsi mengukur seberapa mirip dua buah vektor, misal dua film berdasarkan genrenya dengan menghitung sudut kosinus antar vektor tersebut. Dalam content based filtering, cosine similarity digunakan untuk menemukan film yang paling mirip berdasarkan fitur tersebut. Semakin nilai cosine mendekati 1, maka semakin mirip kedua item tersebut. 
 
@@ -234,6 +269,10 @@ Kekurangan collaborative filtering
 - Cold start problem, dia tidak bisa memberikan rekoemndasi yang baik untuk pengguna baru atau film baru karena belum ada cukup data interaksi
 - Jika data interaksi sangat sedikit model sulit belajar karena terlalu banyak missing values
 - Membutuhkan sumber daya lebih besar saat jumlah pengguna atau item sangat besar
+  
+**Rubrik/Kriteria Tambahan (Opsional)**: 
+- Menyajikan dua solusi rekomendasi dengan algoritma yang berbeda.
+- Menjelaskan kelebihan dan kekurangan dari solusi/pendekatan yang dipilih.
 
 ## Evaluation
 
