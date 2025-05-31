@@ -147,7 +147,7 @@ Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dil
   
   ![image](https://github.com/user-attachments/assets/f12e2eab-59c4-488f-ac3c-60b9c413b483)
   
-  Tidak terdapat missing values pada df. Langkah ini untuk meastikan tidak ada missing values, karena jika ada akan mengganggu pemodelan.
+  Terdapat 5 missing values pada genres dan title di df. Langkah ini untuk memastikan tidak ada missing values, karena jika ada akan mengganggu pemodelan.
 
 - Mengecek data duplikat pada df dengan duplicated()
   
@@ -175,24 +175,24 @@ Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dil
 
 - Mengganti NaN menjadi string kosong
   
-    Sudah tidak terdapat NaN. Ini perlu dilakukan, karena jika terdapat nilai NaN dapat menyebabkan error saat pemodelan berbasis genre. Mengganti NaN dengan string kosong untuk menjaga kestabilan data tanpa harus menghapus baris penting. 
+    Sudah tidak terdapat NaN. Ini perlu dilakukan, karena jika terdapat nilai NaN dapat menyebabkan error saat pemodelan berbasis genre. Mengganti NaN dengan string kosong untuk menjaga kestabilan data tanpa harus menghapus baris penting.
 
-## Modeling
-Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
-
-Modeling yang dilakukan pada project ini adalah content based filtering dan collaborative filtering. 
-### Content Based Filtering
-Content Based Filtering menggunakan TF-IDF Vectorizer dan juga cosine similarity
-#### Metode TF-IDF Vectorizer
-- a
-Berfungsi mengubah teks, misalnya genre film menjadi representasi numerik yang menunjukkan pentingnya kata dalam dokumen relatif terhadap seluruh koleksi data. Dalam content based filtering, TF-IDF membantu memproses fitur konten.
+- Metode TF-IDF Vectorizer
+  Berfungsi mengubah teks, misalnya genre film menjadi representasi numerik yang menunjukkan pentingnya kata dalam dokumen relatif terhadap seluruh koleksi data. Dalam content based filtering, TF-IDF membantu memproses fitur konten.
 Berikut merupakan contoh hasil TD-IDF
 
 ![image](https://github.com/user-attachments/assets/865c9f37-ca03-4b5f-ac75-8496e5f3f49f)
 
 Hasil TF-IDF menunjukkan representasi numerik dari genre genre film berdasarkan pentingnya setiap genre dalam tiap film tersebut. Setiap barisnya mewakili title film, dan kolom adalah genre. Nilai di tiap sel adalah bobot TF-IDF yang menandakan seberapa relevan genre tersebut untuk film itu, makin besar nilainya, maka semakin kahs genre tersebut bagi film. Misalnya Pada film St. Vincent (2014) memiliki nilai 1.000 pada genre Comedy, artinya genre itu sangat spesifik dan penting untuk dilm tersebut, sementara genre lain bernilai 0 yanag berarti tidak terkait. Ini bantu sistem merekomendasikan film dengan genre mirip berdasarkan bobot kata yang dihitung. 
 
-- 
+## Modeling
+Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
+
+Modeling yang dilakukan pada project ini adalah content based filtering dan collaborative filtering. 
+
+### Content Based Filtering
+Content Based Filtering menggunakan hasil dari TF-IDF Vectorizer dan cosine similarity
+ 
 #### Cosine Similarity
 Berfungsi mengukur seberapa mirip dua buah vektor, misal dua film berdasarkan genrenya dengan menghitung sudut kosinus antar vektor tersebut. Dalam content based filtering, cosine similarity digunakan untuk menemukan film yang paling mirip berdasarkan fitur tersebut. Semakin nilai cosine mendekati 1, maka semakin mirip kedua item tersebut. 
 
@@ -234,10 +234,6 @@ Kekurangan collaborative filtering
 - Cold start problem, dia tidak bisa memberikan rekoemndasi yang baik untuk pengguna baru atau film baru karena belum ada cukup data interaksi
 - Jika data interaksi sangat sedikit model sulit belajar karena terlalu banyak missing values
 - Membutuhkan sumber daya lebih besar saat jumlah pengguna atau item sangat besar
-  
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menyajikan dua solusi rekomendasi dengan algoritma yang berbeda.
-- Menjelaskan kelebihan dan kekurangan dari solusi/pendekatan yang dipilih.
 
 ## Evaluation
 
