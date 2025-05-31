@@ -231,13 +231,13 @@ Content Based Filtering menggunakan hasil TF-IDF Vectorizer dan cosine similarit
 #### Cosine Similarity
 Berfungsi mengukur seberapa mirip dua buah vektor, misal dua film berdasarkan genrenya dengan menghitung sudut kosinus antar vektor tersebut. Dalam content based filtering, cosine similarity digunakan untuk menemukan film yang paling mirip berdasarkan fitur tersebut. Semakin nilai cosine mendekati 1, maka semakin mirip kedua item tersebut. 
 
-![image](https://github.com/user-attachments/assets/7d71e347-d752-4c04-9799-81c5708a13c6)
+![image](https://github.com/user-attachments/assets/be56f368-0bce-44a3-aeab-1b8508de8fcb)
 
 Hasil cosine similarity menunjukkan seberapa mirip genre antar film berdasarkan representasi teks genre mereka ayng telah diproses menggunakan TF-IDF Vectorizer. Misalnya Honeydripper (2007) memiliki nilai 1.000 terhadap film Nixon (1995) yang menunjukkan bahwa film ini sangat mirip dari segi genre. Film seperti Turner & Hooch (1989) memiliki nilai 0.0 terhadap film-film lain menunjukkan bahwa genrenya tidak memiliki kemiripan sama sekali dengan yang dibandingkannya. 
 
 Ketika dilakukan percobaan untuk merekomendasikan film kepada user yang menyukai Transformers: Age of Extinction (2014), berikut ini merupakan 5 film yang direkomendasikan. Kelimanya memiliki genre yang serupa, yaitu Action, Adventure, dan Sci-fi.
 
-![image](https://github.com/user-attachments/assets/fb6ad410-2eaa-403b-93da-9ce42de9e451)
+![image](https://github.com/user-attachments/assets/a275d7a7-4ccb-46de-8b3a-aa9f4ff5b637)
 
 Hasil ini bisa digunakan dalam content based filtering untuk merekomendasikan film yang genrenya mirip dengan film yang disukai pengguna. Misal jika pengguna menyukai Honeydripper (2007) maka film dengan nilai cosine similarity tinggi seperti Nixon (1995) bisa direkoemndasikan. 
 
@@ -254,11 +254,12 @@ Kekurangan content based filtering
 ### Collaborative Filtering
 Pendekatan collaborative filtering bekerja dengan memetakan setiap pengguna dan film ke dalam indeks numerik yang unik. Setelah data dinormalisasi dan dibagi menjadi data latih dan data test, model dikembangkan menggunakan arsitektur embedding, di mana tiap pengguna dan film direpresentasikan sebagai vektor dalam ruang berdimensi tertentu. Model kemudian mempelajari hubungan antara pengguna dan film melalui operasi dot product pada vektor embedding untuk prediksi rating yang diberikan. Tujuan metode ini adalah menangkap pola preferensi pengguna berdasarkan interaksi historis mereka dengan film tanpa perlu info konten dari film itu sendiri. 
 
-Hasil yang direkomendasikan kepada user 567 adalah sebagai berikut.
+Hasil yang direkomendasikan kepada user 541 adalah sebagai berikut.
 
-![image](https://github.com/user-attachments/assets/f51ccbf8-7cbf-4497-aea8-74b1c5f8e039)
+![image](https://github.com/user-attachments/assets/761c7b2d-7ecd-497b-bc63-df30f40b661c)
 
-Pengguna ini memiliki preferensi terhadap film dengan genre thriller, crime, sci-fi, dan drama, ada juga variasi comedy dan fantasi. Sistem berhasil merekomendasikan film dengan genre yang sejalan.
+Pengguna ini memiliki preferensi terhadap film dengan genre Sci-fi, Thriller, dan Drama. Hal ini terlihat dari daftar film dengan rating tertinggi yang diberikan user mayoritas bergenre sci-fi dan thriller seperti Blade Runner, Gattaca, dan Dark City. 
+Sistem rekomendasi berhasil menangkap pola preferensi tersebut, karena sebagain besar film dalam daftar Top 10 rekomendasi juga mengandung elemen Sci-fi, Thriller, atau Drama, seperti Memories (1995), Interstate 60 (2002), dan Never Let Me Go (2010). Sehingga dapat disimpulkan bahwa model rekomendasi ini telah bekerja cukup baik dan dapat melakukan personalisasi, karena rekomendasinya konsisten dengan selera pengguna berdasarkan histori rating sebelumnya. 
 
 Kelebihan collaborative filtering
 - Tidak membutuhkan data konten film karena sistem hanya bergantung pada interaksi seperti rating antar pengguna dan item
@@ -270,10 +271,6 @@ Kekurangan collaborative filtering
 - Jika data interaksi sangat sedikit model sulit belajar karena terlalu banyak missing values
 - Membutuhkan sumber daya lebih besar saat jumlah pengguna atau item sangat besar
   
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menyajikan dua solusi rekomendasi dengan algoritma yang berbeda.
-- Menjelaskan kelebihan dan kekurangan dari solusi/pendekatan yang dipilih.
-
 ## Evaluation
 
 Metrik yang digunakan adalah Root Mean Squared Error (RMSE), yaitu metrik untuk mengukur seberapa jauh prediksi model dari nilai sebenarnya. RMSE menghitung akar kuadrat dari rata-rata kuadrat selisih antara nilai prediksi dan nilai aktual. Nilai RMSE yang lebih kecil menunjukkan bahwa model memberikan prediksi yang lebih akurat, karena error prediksi lebih kecil. RMSE sering digunakan utnuk masalah regresi dan sistem rekomendasi. Berikut merupakan formula untuk RMSE:
