@@ -211,15 +211,19 @@ Berikut merupakan contoh hasil TD-IDF
 Hasil TF-IDF menunjukkan representasi numerik dari genre genre film berdasarkan pentingnya setiap genre dalam tiap film tersebut. Setiap barisnya mewakili title film, dan kolom adalah genre. Nilai di tiap sel adalah bobot TF-IDF yang menandakan seberapa relevan genre tersebut untuk film itu, makin besar nilainya, maka semakin kahs genre tersebut bagi film. Misalnya Pada film Demetrius and the Glafiators (1954) memiliki nilai 1.000 pada genre Drama, artinya genre itu sangat spesifik dan penting untuk dilm tersebut, sementara genre lain bernilai 0 yanag berarti tidak terkait. Ini bantu sistem merekomendasikan film dengan genre mirip berdasarkan bobot kata yang dihitung. 
 
 - pada ratings_df dilakukan pemetaan userId dan movieId ke dalam indeks numerik (user_id_to_index, movie_id_to_index)
+  
   Mengubah userId dan movieId menjadi indeks numerik yang terurut agar lebih mudah diproses oleh model. Kode akan mengambil daftar userId dan movieId yang unik dari dataset, kemudian membuat dua dictionary untuk masing masing, yaitu memetakan userId dan movieId asli ke indeks numerik serta sebaliknya
   
 - Melakukan penambahan kolom user_index dan movie_index ke ratings_df
+  
   isinya indeks numerik hasil pemetaan dari userId dan movieId. Ini agar model yang menggunakan embedding layer dapat menerima input berupa indeks numerik bukan Id asli, sehingga proses training dan prediksi menjadi lebih terstruktur
   
 - melakukan random data (ratings_df.sample(frac=1)
+  
   mengacak urutan baris dalam dataset ratings_df. sample(frac=1) akan mengambil 100% data tapi dalam urutan yang diacak.Tujuannya untuk menghindari bias urutan data.
   
 - Melakukan normalisasi nilai rating ((val - min_raing) / (max_rating - min_rating))
+  
   Kolom rating dinormalisasi ke rentang 0 - 1 menggunakan metode min max scaling agar bisa langsung digunakan untuk training model di RecommenderNet
   
 - Melakukan pembagian dataset menjadi data latih dan data validasi dengan rasio 80:20
