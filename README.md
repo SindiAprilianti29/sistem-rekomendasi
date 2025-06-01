@@ -251,10 +251,6 @@ Begitu juga ketika dicoba untuk merekomendasikan film kepada user yang menyukai 
 
 ![image](https://github.com/user-attachments/assets/4c1cfb4f-c267-44d8-91ab-df9f9e89c61d)
 
-Dalam evaluasi sistem rekomendasi Content Based Filtering, digunakan metrik Precision@k untuk mengukur kualitas rekoemndasi. Precision@K didefinisikan sebagai proporsi item relevan di antara K item teratas yang direkomendasikan oleh sistem. Item relevan dalam konteks ini adalah film yang memiliki genre yang sama atau sangat mirip dengan film yang dijadikan sample uji. Perhitungan precision@k dilakukan dengan mengambil beberapa film sebagai sample, kemudian masing masing film tersebut memberikan top k rekomendasi. Selanjutnya jumlah rekomendasi yang dianggap relevan (memiliki genre yang cocok) akan dihitung dan dibagi dengan K untuk memperoleh nilai precision@k pada film. Nilai precision@k rata rata diperoleh dengan hitung rata rata precision@k dari semua sample film yang diuji. Seperti film 'Transformers: Age of Extinction (2014)’ dan ‘Toy Story (1995)’, sistem merekomendasikan 5 film teratas yang seluruhnya relevan berdasarkan genre, sehingga nilai precision@5 kedua film tersebut adalah 1.00. rata ratanya juga mencapai 1.00 yang berarti sistem memberikan rekomendasi yang sangat akurat sesuai karakteristik film asal
-
-Hasil ini bisa digunakan dalam content based filtering untuk merekomendasikan film yang genrenya mirip dengan film yang disukai pengguna. Misal jika pengguna menyukai Honeydripper (2007) maka film dengan nilai cosine similarity tinggi seperti Nixon (1995) bisa direkoemndasikan. 
-
 Kelebihan content based filtering
 - Tidak tergantung pada pengguna lain, rekomendasinya berdasarkan atribut item, cocok untuk pengguna baru
 - Konsisten dengan minat pengguna karena merekomendasikan film yang mirip dengan yang disukai sebelumnya, jadi hasil lebih relevan
@@ -264,6 +260,14 @@ Kekurangan content based filtering
 - Kurang bervariasi karena cenderung merekomendasikan item yang terlalu mirip
 - Membutuhkan data konten yang lengkap karena jika informasi genre atau atribut lain tidak lengkap sistem jadi tidak akurat
 - Sulit menangkap pola kompleks karena tidak mempertimbangkan interaksi antar pengguna yang bisa memberi informasi tambahan
+
+## Evaluation
+
+Dalam evaluasi sistem rekomendasi Content Based Filtering, digunakan metrik Precision@k untuk mengukur kualitas rekoemndasi. Precision@K didefinisikan sebagai proporsi item relevan di antara K item teratas yang direkomendasikan oleh sistem. Item relevan dalam konteks ini adalah film yang memiliki genre yang sama atau sangat mirip dengan film yang dijadikan sample uji. Perhitungan precision@k dilakukan dengan mengambil beberapa film sebagai sample, kemudian masing masing film tersebut memberikan top k rekomendasi. Selanjutnya jumlah rekomendasi yang dianggap relevan (memiliki genre yang cocok) akan dihitung dan dibagi dengan K untuk memperoleh nilai precision@k pada film. Nilai precision@k rata rata diperoleh dengan hitung rata rata precision@k dari semua sample film yang diuji. Seperti film 'Transformers: Age of Extinction (2014)’ dan ‘Toy Story (1995)’, sistem merekomendasikan 5 film teratas yang seluruhnya relevan berdasarkan genre, sehingga nilai precision@5 kedua film tersebut adalah 1.00. rata ratanya juga mencapai 1.00 yang berarti sistem memberikan rekomendasi yang sangat akurat sesuai karakteristik film asal
+
+![image](https://github.com/user-attachments/assets/0e761e7a-ec49-434d-b3c2-5cfd49a875e7)
+
+Hasil ini bisa digunakan dalam content based filtering untuk merekomendasikan film yang genrenya mirip dengan film yang disukai pengguna. Misal jika pengguna menyukai Honeydripper (2007) maka film dengan nilai cosine similarity tinggi seperti Nixon (1995) bisa direkoemndasikan. 
 
 ### Collaborative Filtering
 Pendekatan collaborative filtering bekerja dengan memetakan setiap pengguna dan film ke dalam indeks numerik yang unik. Setelah data dinormalisasi dan dibagi menjadi data latih dan data test, model dikembangkan menggunakan arsitektur embedding, di mana tiap pengguna dan film direpresentasikan sebagai vektor dalam ruang berdimensi tertentu. Model kemudian mempelajari hubungan antara pengguna dan film melalui operasi dot product pada vektor embedding untuk prediksi rating yang diberikan. Tujuan metode ini adalah menangkap pola preferensi pengguna berdasarkan interaksi historis mereka dengan film tanpa perlu info konten dari film itu sendiri. 
