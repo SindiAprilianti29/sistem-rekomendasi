@@ -247,6 +247,12 @@ Ketika dilakukan percobaan untuk merekomendasikan film kepada user yang menyukai
 
 ![image](https://github.com/user-attachments/assets/a275d7a7-4ccb-46de-8b3a-aa9f4ff5b637)
 
+Begitu juga ketika dicoba untuk merekomendasikan film kepada user yang menyukai Toy Story, maka top 5 film yang direkomendasikan memiliki genre serupa, yaitu Adventure|Animation|Children|Comedy|Fantasy
+
+![image](https://github.com/user-attachments/assets/4c1cfb4f-c267-44d8-91ab-df9f9e89c61d)
+
+Dalam evaluasi sistem rekomendasi Content Based Filtering, digunakan metrik Precision@k untuk mengukur kualitas rekoemndasi. Precision@K didefinisikan sebagai proporsi item relevan di antara K item teratas yang direkomendasikan oleh sistem. Item relevan dalam konteks ini adalah film yang memiliki genre yang sama atau sangat mirip dengan film yang dijadikan sample uji. Perhitungan precision@k dilakukan dengan mengambil beberapa film sebagai sample, kemudian masing masing film tersebut memberikan top k rekomendasi. Selanjutnya jumlah rekomendasi yang dianggap relevan (memiliki genre yang cocok) akan dihitung dan dibagi dengan K untuk memperoleh nilai precision@k pada film. Nilai precision@k rata rata diperoleh dengan hitung rata rata precision@k dari semua sample film yang diuji. Seperti film 'Transformers: Age of Extinction (2014)’ dan ‘Toy Story (1995)’, sistem merekomendasikan 5 film teratas yang seluruhnya relevan berdasarkan genre, sehingga nilai precision@5 kedua film tersebut adalah 1.00. rata ratanya juga mencapai 1.00 yang berarti sistem memberikan rekomendasi yang sangat akurat sesuai karakteristik film asal
+
 Hasil ini bisa digunakan dalam content based filtering untuk merekomendasikan film yang genrenya mirip dengan film yang disukai pengguna. Misal jika pengguna menyukai Honeydripper (2007) maka film dengan nilai cosine similarity tinggi seperti Nixon (1995) bisa direkoemndasikan. 
 
 Kelebihan content based filtering
