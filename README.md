@@ -195,6 +195,10 @@ Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dil
 
   ![image](https://github.com/user-attachments/assets/b1ef4b2c-96d0-4931-a88e-8f9587e2dbf0)
 
+  Mengubah teks genre dari setiap film menjadi representasi numerik menggunakan TF-IDF lalu menampilkan ukuran dari matriks hasilnya (10323, 24)
+
+  ![image](https://github.com/user-attachments/assets/cbc3cfe9-5aec-490d-bf7e-72a1051b5438)
+
   Kemudian mengubah vektor tf-idf menjadi bentuk list
 
   ![image](https://github.com/user-attachments/assets/18ded09d-4f01-44fe-9f17-09c23dc46a0e)
